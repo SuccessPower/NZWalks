@@ -3,7 +3,7 @@ using NZWalks.API.Data;
 using NZWalks.API.Repository;
 using AutoMapper;
 using NZWalks.API.Profiles;
-
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +14,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services
+    .AddFluentValidation(options => options.RegisterValidatorsFromAssemblyContaining<Program>());
+
 builder.Services.AddDbContext<NZWalksDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("NZWalks"));
@@ -22,6 +25,7 @@ builder.Services.AddDbContext<NZWalksDbContext>(options =>
 builder.Services.AddScoped<IRegionRepository, RegionRepository>();
 builder.Services.AddScoped<IWalkRepository, WalkRepository>();
 builder.Services.AddScoped<IWalkDifficultyRepository, WalkDifficultyRepository>();
+
 
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 

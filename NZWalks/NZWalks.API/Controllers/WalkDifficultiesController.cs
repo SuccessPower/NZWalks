@@ -52,10 +52,10 @@ namespace NZWalks.API.Controllers
             Models.DTO.AddWalkDifficultyRequest walkDifficultyRequest)
         {
             //Validate incoming request 
-            if(!(await ValidateAddWalkDifficulty(walkDifficultyRequest)))
-            {
-                return BadRequest(ModelState);
-            }
+            //if(!(await ValidateAddWalkDifficulty(walkDifficultyRequest)))
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
             //Convert DTO to Domain Model
             var walkDifficultyDomain = new Models.Domain.WalkDifficulty
@@ -79,10 +79,10 @@ namespace NZWalks.API.Controllers
             Models.DTO.UpdateWalkDifficultyRequest updateWalkDifficultyRequest)
         {
             //Validate incoming request
-            if(!(await ValidateUpdateWalkDifficultyAsync(updateWalkDifficultyRequest)))
-            {
-                return BadRequest(ModelState);
-            }
+            //if(!(await ValidateUpdateWalkDifficultyAsync(updateWalkDifficultyRequest)))
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
             // Convert DTO to Domain Model
             var walkDifficultyDomain = new Models.Domain.WalkDifficulty
